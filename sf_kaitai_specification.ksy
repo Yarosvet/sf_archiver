@@ -9,7 +9,6 @@ meta:
 seq:
   - id: header
     type: header
-    size: 312
   - id: table
     type: assigned_code
     repeat: expr
@@ -26,6 +25,8 @@ types:
         type: u1
       - id: content_length
         type: u8
+      - id: checksum_crc32
+        type: u4
       - id: table_length_decreased
         type: u1
       - id: metadata
