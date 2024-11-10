@@ -38,7 +38,7 @@ def __compress(
     distribution = alg.count_distribution(if_stream)
     table = alg.assign_shannon_fano(distribution) if algorithm == 'fano' else alg.assign_huffman(distribution)
     if_stream.seek(0)  # Guarantee that we are at the beginning of the file
-    meta = filename.encode('utf-8') + b"\n"
+    meta = filename.encode('utf-8')
     protocol.encode(if_stream, of_stream, table, meta, enable_checksum=enable_checksum)
 
 
