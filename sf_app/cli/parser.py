@@ -30,7 +30,7 @@ def configure_parser() -> argparse.ArgumentParser:
     decompress_parser.add_argument('-i', '--input', help='Input file', required=True, type=str)
     decompress_parser.add_argument(
         '-o', '--output',
-        help='Output file or directory (default ./)',
+        help='Output file or directory (default ./) If no name specified, original name will be used',
         required=False,
         default='./'
     )
