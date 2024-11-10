@@ -26,6 +26,7 @@ exclude = [
     "node_modules",
     "site-packages",
     "venv",
+    "sf_app/gui/main_window.py",
 ]
 
 extend-select = [
