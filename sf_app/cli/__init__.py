@@ -1,9 +1,11 @@
+"""Command-line interface for the application."""
 from sf_app.misc import SimpleCallback
 
 from .parser import configure_parser
 
 
 class CommandLineInterface:
+    """Command-line interface class."""
 
     def __init__(self):
         self.compress_callback = SimpleCallback()

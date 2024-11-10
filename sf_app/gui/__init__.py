@@ -1,3 +1,4 @@
+"""Graphical user interface for the application."""
 import signal
 
 from PyQt6.QtWidgets import QApplication
@@ -6,6 +7,8 @@ from .mechanics import MainWindow
 
 
 class GUI:
+    """Graphical user interface."""
+
     def __init__(self):
         self._app = QApplication([])
         self.main_window = MainWindow()

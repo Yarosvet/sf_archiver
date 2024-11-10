@@ -1,3 +1,4 @@
+"""Module contains controllers for the application."""
 import pathlib
 
 from sf_app.cli import CommandLineInterface
@@ -6,6 +7,8 @@ from sf_app.logic import compress_huffman, compress_shannon_fano, decompress
 
 
 class AppController:
+    """Main controller of the application."""
+
     def __init__(self):
         self._cli = CommandLineInterface()
         self._cli.compress_callback.set_callable(self._compress)
@@ -17,7 +20,7 @@ class AppController:
         self._gui.decompress_callback.set_callable(self._decompress)
 
     @staticmethod
-    def _compress(input_path: str, output_path: str, verify: bool, algorithm: int):
+    def _compress(input_path: str, output_path: str, verify: bool, algorithm: int):  # noqa: FBT001
         filename = pathlib.Path(input_path).name
         with open(input_path, 'rb') as fi, open(output_path, 'wb') as fo:
             if algorithm == 1:
@@ -26,7 +29,7 @@ class AppController:
                 compress_shannon_fano(fi, fo, filename, enable_checksum=verify)
 
     @staticmethod
-    def _decompress(input_path, output_path, verify: bool):
+    def _decompress(input_path, output_path, verify: bool):  # noqa: FBT001
         use_orig_filename = False
         if pathlib.Path(output_path).is_dir():
             output_path = pathlib.Path(output_path) / "temp.bin"

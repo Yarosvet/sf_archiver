@@ -29,7 +29,7 @@ exclude = [
     "sf_app/gui/main_window.py",
 ]
 
-extend-select = [
+lint.extend-select = [
     "F",
     "E",
     "W",
@@ -44,9 +44,11 @@ extend-select = [
     "B",
     "ASYNC"
 ]
-ignore=[
+lint.ignore = [
     "D211",
     "D213",
     "D401",
-    "D203"
+    "D203",
+    "D102",
+    "D107",
 ]

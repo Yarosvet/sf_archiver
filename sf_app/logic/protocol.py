@@ -1,3 +1,4 @@
+"""Module for encoding and decoding files using the protocol."""
 from dataclasses import dataclass
 from typing import BinaryIO
 from zlib import crc32
@@ -8,8 +9,15 @@ FORMAT_VERSION = 1
 
 @dataclass
 class DecodeReport:
+    """Metadata and content length of the decoded file."""
+
     meta: bytes
     content_length: int
+
+
+CHECKSUM_BUFFER_SIZE = 512
+ENCODING_BUFFER_SIZE = 8
+MAX_METADATA_SIZE = 300
 
 
 def encode(
@@ -17,19 +25,21 @@ def encode(
         of_stream: BinaryIO,
         table: dict[bytes, str],
         meta: bytes = None,
+        *,
         enable_checksum: bool = True
 ) -> None:
+    """Encode the input stream using the table and write the result to the output stream."""
     if meta is None:
         meta = b""
-    if len(meta) > 300:
-        raise ValueError("Metadata is too long (300 bytes max)")
+    if len(meta) > MAX_METADATA_SIZE:
+        raise ValueError(f"Metadata is too long ({MAX_METADATA_SIZE} bytes max)")
     # Construct header
     header = (FORMAT_HEADER +
               FORMAT_VERSION.to_bytes(1, "big") +
               b"\x00\x00\x00\x00\x00\x00\x00\x00" +  # (8b) There will be content length (will be filled later)
               b"\x00\x00\x00\x00" +  # Here will be CRC32 (4b) (will be filled later)
               (len(table) - 1).to_bytes(1, 'big') +  # Table length - 1 (in symbols)
-              meta.rjust(300, b"\x00"))  # Metadata (300b)
+              meta.rjust(MAX_METADATA_SIZE, b"\x00"))  # Metadata (300b)
     content_length_pos = 3
     checksum_pos = 11
     of_stream.write(header)
@@ -48,13 +58,13 @@ def encode(
     while sym := if_stream.read(1):
         c += 1
         buffer += table[sym]
-        while len(buffer) >= 8:
-            of_stream.write(int(buffer[:8], 2).to_bytes(1, 'big'))
-            buffer = buffer[8:]
+        while len(buffer) >= ENCODING_BUFFER_SIZE:
+            of_stream.write(int(buffer[:ENCODING_BUFFER_SIZE], 2).to_bytes(1, 'big'))
+            buffer = buffer[ENCODING_BUFFER_SIZE:]
         # For checksum
         if enable_checksum:
             checksum_buffer += sym
-            if len(checksum_buffer) >= 512:
+            if len(checksum_buffer) >= CHECKSUM_BUFFER_SIZE:
                 checksum = crc32(checksum_buffer, checksum)
                 checksum_buffer = b""
     if buffer:  # It's certainly less than 8
@@ -80,8 +90,10 @@ def encode(
 def decode(
         if_stream: BinaryIO,
         of_stream: BinaryIO,
+        *,
         enable_checksum: bool = True
 ) -> DecodeReport:
+    """Decode the input stream and write the result to the output stream."""
     # Read header (312b)
     header = if_stream.read(316)
     # Check protocol code
@@ -98,7 +110,7 @@ def decode(
     _meta = header[16:]
     # Read table
     table: dict[str, bytes] = {}
-    for i in range(table_length):
+    for _i in range(table_length):
         b = if_stream.read(1)
         code_length = int().from_bytes(if_stream.read(1), 'big') + 1
         code = (bin(int.from_bytes(if_stream.read((code_length + (8 - code_length % 8)) // 8), 'big'))[2:]
@@ -123,7 +135,7 @@ def decode(
                     # For checksum
                     if enable_checksum and checksum_orig != 0:  # If checksum was 0, we just didn't write it in the file
                         checksum_buffer += table[k]
-                        if len(checksum_buffer) >= 512:
+                        if len(checksum_buffer) >= CHECKSUM_BUFFER_SIZE:
                             checksum = crc32(checksum_buffer, checksum)
                             checksum_buffer = b""
                     break
@@ -133,7 +145,7 @@ def decode(
     if enable_checksum and checksum_orig != 0 and checksum_buffer:
         checksum = crc32(checksum_buffer, checksum)
     # Check checksum
-    if enable_checksum and checksum_orig != 0 and checksum != checksum_orig:
+    if enable_checksum and checksum_orig not in (0, checksum):
         raise ValueError("Checksum mismatch")
     return DecodeReport(
         meta=_meta,

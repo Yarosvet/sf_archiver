@@ -1,7 +1,9 @@
+"""Command-line parser for SF Archiver."""
 import argparse
 
 
 def configure_parser() -> argparse.ArgumentParser:
+    """Configure the command-line parser."""
     parser = argparse.ArgumentParser(
         prog='Shannon Fano archiver',
         description='Compress and decompress files using SF Archiver'

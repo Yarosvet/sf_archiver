@@ -1,7 +1,6 @@
-"""Algorithms of assigning codes"""
+"""Algorithms of assigning codes."""
 import heapq
 from typing import BinaryIO
-
 
 # TODO: Do some make-up here
 
@@ -10,11 +9,11 @@ def assign_shannon_fano(
         dist_group: list[tuple[bytes, float]],
         prefix: str = ""
 ) -> dict[bytes, str]:
-    """
-    Assign syms to their binary codes using Shannon-Fano algorithm
+    """Assign syms to their binary codes using Shannon-Fano algorithm.
+
     :param dist_group: Tuples (letter, distribution)
     :param prefix: Current prefix
-    :return: Dictionary (sym:code)
+    :return: Dictionary (sym:code).
     """
     _dist = list(sorted(dist_group, key=lambda x: x[1]))
 
@@ -22,7 +21,7 @@ def assign_shannon_fano(
         return {}
     elif len(_dist) == 1:
         return {_dist[0][0]: prefix}
-    elif len(_dist) == 2:
+    elif len(_dist) == 2:  # noqa: PLR2004
         return {_dist[0][0]: prefix + "0", _dist[1][0]: prefix + "1"}
 
     line = len(_dist) - 1
@@ -41,6 +40,8 @@ def assign_shannon_fano(
 
 
 class HuffmanNode:
+    """Node of the Huffman tree."""
+
     def __init__(self, symbol=None, frequency=None):
         self.symbol = symbol
         self.frequency = frequency
@@ -48,10 +49,12 @@ class HuffmanNode:
         self.right = None
 
     def __lt__(self, other):
+        """Comparison method for priority queue."""
         return self.frequency < other.frequency
 
 
 def build_huffman_tree(dist_group: list[tuple[bytes, float]]) -> HuffmanNode:
+    """Build a Huffman tree from the distribution group."""
     # Create a priority queue of nodes
     priority_queue = [HuffmanNode(char, f) for char, f in dist_group]
     heapq.heapify(priority_queue)
@@ -69,6 +72,7 @@ def build_huffman_tree(dist_group: list[tuple[bytes, float]]) -> HuffmanNode:
 
 
 def generate_huffman_codes(node, code="", huffman_codes=None):
+    """Generate Huffman codes for the tree."""
     if huffman_codes is None:
         huffman_codes = {}
     if node is not None:
@@ -84,17 +88,18 @@ def assign_huffman(
         dist_group: list[tuple[bytes, float]],
         prefix: str = ""
 ) -> dict[bytes, str]:
-    """
-    Assign syms to their binary codes using Huffman algorithm
+    """Assign syms to their binary codes using Huffman algorithm.
+
     :param dist_group: Tuples (letter, distribution)
     :param prefix: Current prefix
-    :return: Dictionary (sym:code)
+    :return: Dictionary (sym:code).
     """
     root = build_huffman_tree(dist_group)
     return generate_huffman_codes(root)
 
 
 def count_distribution(if_stream: BinaryIO) -> list[tuple[bytes, float]]:
+    """Count the distribution of symbols in the input stream."""
     # Count statistics
     stats: dict[bytes, int] = {}
     while sym := if_stream.read(1):

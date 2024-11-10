@@ -1,3 +1,4 @@
+"""Mechanics of the GUI."""
 from PyQt6.QtCore import QThread, pyqtSlot
 from PyQt6.QtWidgets import QFileDialog, QMainWindow, QMessageBox
 
@@ -7,6 +8,8 @@ from .main_window import Ui_MainWindow
 
 
 class QThreadedSafeTask(QThread):
+    """A task that runs in a separate thread and can safely call a callback in the main thread."""
+
     def __init__(self, action, *args, **kwargs):
         super().__init__()
         self.action = action
@@ -23,6 +26,8 @@ class QThreadedSafeTask(QThread):
 
 
 class MainWindow(QMainWindow):
+    """Main window of the GUI."""
+
     def __init__(self):
         super().__init__()
         self.ui = Ui_MainWindow()
