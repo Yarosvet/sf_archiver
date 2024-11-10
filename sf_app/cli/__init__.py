@@ -13,9 +13,9 @@ class CommandLineInterface:
     def run(self):
         _parser = configure_parser()
         args = vars(_parser.parse_args())
-        if args['mode'] == 'compress':
-            self.compress_callback(args['input'], args['output'])
-        elif args['mode'] == 'decompress':
-            self.decompress_callback(args['input'], args['output'])
-        elif args['mode'] == 'gui':
+        if args['mode'] == 'gui' or args['mode'] is None:
             self.gui_callback()
+        elif args['mode'] == 'compress':
+            self.compress_callback(args['input'], args['output'], bool(args['verify']), args['algorithm'])
+        elif args['mode'] == 'decompress':
+            self.decompress_callback(args['input'], args['output'], bool(args['verify']))
