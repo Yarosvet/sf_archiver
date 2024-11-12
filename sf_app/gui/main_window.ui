@@ -6,12 +6,103 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>278</width>
-    <height>305</height>
+    <width>280</width>
+    <height>300</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>280</width>
+    <height>300</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>280</width>
+    <height>312</height>
+   </size>
+  </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>SF Archiver</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>img/sf_icon.png</normaloff>img/sf_icon.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {
+	background-color: rgb(36, 36, 36);
+}
+
+QPushButton {
+	background-color: white;
+	color: black;
+	height: 30px;
+	border: none;
+	border-radius: 15px;
+}
+
+QPushButton:!enabled {
+	background-color: rgb(154, 153, 150);
+	color: rgb(61, 56, 70);
+}
+
+QPushButton:hover {
+	background-color: rgb(244, 243, 242);
+}
+
+QPushButton:pressed {
+	background-color:rgb(222, 221, 218);
+}
+
+QCheckBox {
+	color: white;
+}
+
+QCheckBox::indicator {
+    width:                  10px;
+    height:                 10px;
+    border:                 2px solid rgb(119, 118, 123);
+}
+
+QCheckBox::indicator:checked {
+    background-color: white;
+}
+
+QCheckBox::indicator:unchecked {
+    background-color: none;
+}
+
+QRadioButton {
+	color: white;
+}
+
+QRadioButton::indicator {
+    width:                  10px;
+    height:                 10px;
+    border-radius:          7px;
+    border:                 2px solid rgb(119, 118, 123);
+}
+
+QRadioButton::indicator:checked {
+    background-color: white;
+}
+
+QRadioButton::indicator:unchecked {
+    background-color:      none;
+}
+
+QGroupBox {
+	color: white;
+}
+
+QLabel {
+	color: white;
+}
+
+QStatusBar{
+	color: white;
+}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -19,22 +110,67 @@
      <number>10</number>
     </property>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout">
+     <layout class="QVBoxLayout" name="verticalLayout_4">
+      <property name="spacing">
+       <number>6</number>
+      </property>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="font">
+           <font>
+            <family>Cantarell Light</family>
+            <pointsize>11</pointsize>
+            <bold>true</bold>
+            <underline>true</underline>
+           </font>
+          </property>
+          <property name="text">
+           <string>&lt;a href=&quot;https://github.com/Yarosvet/sf_archiver&quot; style=&quot;color: white&quot;&gt;Visit GitHub&lt;/a&gt;</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+          <property name="openExternalLinks">
+           <bool>true</bool>
+          </property>
+          <property name="textInteractionFlags">
+           <set>Qt::TextBrowserInteraction</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="version_label">
+          <property name="font">
+           <font>
+            <family>DejaVu Sans Mono</family>
+           </font>
+          </property>
+          <property name="text">
+           <string>v1.0</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
       <item>
        <widget class="QLabel" name="label">
+        <property name="font">
+         <font>
+          <family>DejaVu Sans Mono</family>
+          <pointsize>25</pointsize>
+          <bold>false</bold>
+         </font>
+        </property>
         <property name="text">
          <string>SF Archiver</string>
         </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
-      <item>
-       <widget class="QCheckBox" name="verify_checkbox">
-        <property name="text">
-         <string>Verify CRC32 checksum</string>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
@@ -50,6 +186,9 @@
         <layout class="QVBoxLayout" name="verticalLayout_3">
          <item>
           <widget class="QRadioButton" name="fano_radio">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
            <property name="text">
             <string>Shannon-Fano</string>
            </property>
@@ -60,12 +199,32 @@
          </item>
          <item>
           <widget class="QRadioButton" name="huffman_radio">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
            <property name="text">
             <string>Huffman</string>
            </property>
           </widget>
          </item>
         </layout>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QCheckBox" name="verify_checkbox">
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="text">
+         <string>Verify CRC32 checksum</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
      </layout>
@@ -87,6 +246,15 @@
      <layout class="QHBoxLayout" name="horizontalLayout_3">
       <item>
        <widget class="QPushButton" name="compress_button">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="text">
          <string>Compress</string>
         </property>
@@ -94,6 +262,15 @@
       </item>
       <item>
        <widget class="QPushButton" name="decompress_button">
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="text">
          <string>Decompress</string>
         </property>
