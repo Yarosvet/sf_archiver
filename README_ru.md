@@ -32,7 +32,7 @@ pip install -r requirements.txt
 python main.py
 ```
 
-Или собрать его с помощью pyinstaller:
+Или, можно собрать его с помощью pyinstaller:
 
 ```bash
 pip install pyinstaller
