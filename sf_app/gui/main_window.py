@@ -16,7 +16,7 @@ class Ui_MainWindow(object):
         MainWindow.setMinimumSize(QtCore.QSize(280, 300))
         MainWindow.setMaximumSize(QtCore.QSize(280, 312))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("sf_app/gui/img/sf_icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap(":/img/img/sf_icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet("QMainWindow {\n"
 "    background-color: rgb(36, 36, 36);\n"
@@ -120,7 +120,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.addLayout(self.horizontalLayout_4)
         self.label = QtWidgets.QLabel(parent=self.centralwidget)
         self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap("sf_app/gui/img/sf_logo.png"))
+        self.label.setPixmap(QtGui.QPixmap(":/img/img/sf_logo.png"))
         self.label.setScaledContents(False)
         self.label.setAlignment(QtCore.Qt.AlignmentFlag.AlignRight|QtCore.Qt.AlignmentFlag.AlignTrailing|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.label.setObjectName("label")

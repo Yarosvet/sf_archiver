@@ -16,8 +16,6 @@ class AppController:
         self._cli.gui_callback.set_callable(self._run_gui)
 
         self._gui = GUI()
-        self._gui.compress_callback.set_callable(self._compress)
-        self._gui.decompress_callback.set_callable(self._decompress)
 
     @staticmethod
     def _compress(input_path: str, output_path: str, verify: bool, algorithm: int):  # noqa: FBT001
@@ -41,6 +39,9 @@ class AppController:
             pathlib.Path(output_path).replace(new_path)
 
     def _run_gui(self):
+        self._gui.build()
+        self._gui.compress_callback.set_callable(self._compress)
+        self._gui.decompress_callback.set_callable(self._decompress)
         self._gui.run()
 
     def run(self):
