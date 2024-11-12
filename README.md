@@ -11,6 +11,14 @@ The compressed file format is a structure consisting of a header, metadata, code
 - [English](README.md)
 - [Russian](README_ru.md)
 
+## Used technologies:
+- Work with binary formats (and Kaitai struct language)
+- Shannon-fano and Huffman algorithms
+- GUI with _PyQT6_
+- CLI with _argparse_
+- Using _pyinstaller_ to build an EXE
+- CI/CD with _GitHub Actions_ (managing quality of code with [Ruff](https://pypi.org/project/ruff/))
+
 ## Installation
 
 You can get an executable file for Windows from the [releases](https://github.com/Yarosvet/sf_archiver/releases) page.
