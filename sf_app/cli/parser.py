@@ -5,7 +5,7 @@ import argparse
 def configure_parser() -> argparse.ArgumentParser:
     """Configure the command-line parser."""
     parser = argparse.ArgumentParser(
-        prog='Shannon Fano archiver',
+        prog='sf_archiver',
         description='Compress and decompress files using SF Archiver'
     )
     subparsers = parser.add_subparsers(dest='mode', help='Mode of operation')
