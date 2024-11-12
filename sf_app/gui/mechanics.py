@@ -46,6 +46,7 @@ class MainWindow(QMainWindow):
         m.setIcon(QMessageBox.Icon.Critical)
         m.setInformativeText(message)
         m.setWindowTitle('Error')
+        m.setStyleSheet("color: red;")
         m.exec()
 
     @pyqtSlot()
