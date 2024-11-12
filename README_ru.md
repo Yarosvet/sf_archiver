@@ -4,6 +4,8 @@ _Архиватор Шеннона-Фано. <br>
 Это эксперимент, в котором я делал свой собственный архиватор с алгоритмом Шеннона-Фано.<br>
 (Через некоторое время я добавил и алгоритм Хаффмана.)_
 
+Формат сжатого файла представляет собой структуру, состоящую из заголовка, метаданных, таблицы кодов и данных исходного файла в сжатом виде.<br>
+
 ## Выберите язык
 
 - [Английский](README.md)
@@ -87,7 +89,7 @@ options:
 usage: sf_archiver decompress [-h] -i INPUT [-o OUTPUT] [-v]
 
 options:
-  -h, --help            show this help message and exit
+  -h, --help            show this help message and e-xit
   -i INPUT, --input INPUT
                         Input file
   -o OUTPUT, --output OUTPUT

@@ -4,6 +4,8 @@ _Shannon-Fano archiver. <br>
 It's an experiment, in which I was making my own archiver with Shannon-Fano algorithm.<br>
 After some time I've added Huffman algorithm too._
 
+The compressed file format is a structure consisting of a header, metadata, code table, and compressed source file data.<br>
+
 ## Select language
 
 - [English](README.md)
