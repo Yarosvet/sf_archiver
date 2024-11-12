@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>280</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>280</width>
+    <height>300</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>280</width>
+    <height>312</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>SF Archiver</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>img/sf_icon.png</normaloff>img/sf_icon.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {
+	background-color: rgb(36, 36, 36);
+}
+
+QPushButton {
+	background-color: white;
+	color: black;
+	height: 30px;
+	border: none;
+	border-radius: 15px;
+	font: 700 15px &quot;Roboto&quot;;
+}
+
+QPushButton:!enabled {
+	background-color: rgb(154, 153, 150);
+	color: rgb(61, 56, 70);
+}
+
+QPushButton:hover {
+	background-color: rgb(244, 243, 242);
+}
+
+QPushButton:pressed {
+	background-color:rgb(222, 221, 218);
+}
+
+QCheckBox {
+	color: white;
+	font: 50 15px &quot;Roboto&quot;;
+}
+
+QCheckBox::indicator {
+    width:                  10px;
+    height:                 10px;
+    border:                 2px solid rgb(119, 118, 123);
+}
+
+QCheckBox::indicator:checked {
+    background-color: white;
+}
+
+QCheckBox::indicator:unchecked {
+    background-color: none;
+}
+
+QRadioButton {
+	color: white;
+	font: 50 15px &quot;Roboto&quot;;
+}
+
+QRadioButton::indicator {
+    width:                  10px;
+    height:                 10px;
+    border-radius:          7px;
+    border:                 2px solid rgb(119, 118, 123);
+}
+
+QRadioButton::indicator:checked {
+    background-color: white;
+}
+
+QRadioButton::indicator:unchecked {
+    background-color:      none;
+}
+
+QGroupBox {
+	color: white;
+	font: 50 15px &quot;Roboto&quot;;
+}
+
+QLabel {
+	color: white;
+	font: 50 15px &quot;Roboto&quot;;
+}
+
+QStatusBar{
+	color: white;
+	font: 15px &quot;Roboto&quot;;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>10</number>
+    </property>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_4">
+      <property name="spacing">
+       <number>6</number>
+      </property>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>&lt;a href=&quot;https://github.com/Yarosvet/sf_archiver&quot; style=&quot;color: white&quot;&gt;Visit GitHub&lt;/a&gt;</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+          <property name="openExternalLinks">
+           <bool>true</bool>
+          </property>
+          <property name="textInteractionFlags">
+           <set>Qt::TextBrowserInteraction</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="version_label">
+          <property name="text">
+           <string>v1.0</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>img/sf_logo.png</pixmap>
+        </property>
+        <property name="scaledContents">
+         <bool>false</bool>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QGroupBox" name="groupBox">
+        <property name="title">
+         <string>Compression algorithm</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <item>
+          <widget class="QRadioButton" name="fano_radio">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string>Shannon-Fano</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="huffman_radio">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string>Huffman</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QCheckBox" name="verify_checkbox">
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="text">
+         <string>Verify CRC32 checksum</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QPushButton" name="compress_button">
+        <property name="font">
+         <font>
+          <family>Roboto</family>
+          <pointsize>-1</pointsize>
+          <italic>false</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="text">
+         <string>Compress</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="decompress_button">
+        <property name="font">
+         <font>
+          <family>Roboto</family>
+          <pointsize>-1</pointsize>
+          <italic>false</italic>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="text">
+         <string>Decompress</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar">
+   <property name="layoutDirection">
+    <enum>Qt::RightToLeft</enum>
+   </property>
+   <property name="sizeGripEnabled">
+    <bool>false</bool>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
