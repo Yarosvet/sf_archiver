@@ -40,6 +40,7 @@ QPushButton {
 	height: 30px;
 	border: none;
 	border-radius: 15px;
+	font: 700 15px &quot;Roboto&quot;;
 }
 
 QPushButton:!enabled {
@@ -57,6 +58,7 @@ QPushButton:pressed {
 
 QCheckBox {
 	color: white;
+	font: 50 15px &quot;Roboto&quot;;
 }
 
 QCheckBox::indicator {
@@ -75,6 +77,7 @@ QCheckBox::indicator:unchecked {
 
 QRadioButton {
 	color: white;
+	font: 50 15px &quot;Roboto&quot;;
 }
 
 QRadioButton::indicator {
@@ -94,14 +97,17 @@ QRadioButton::indicator:unchecked {
 
 QGroupBox {
 	color: white;
+	font: 50 15px &quot;Roboto&quot;;
 }
 
 QLabel {
 	color: white;
+	font: 50 15px &quot;Roboto&quot;;
 }
 
 QStatusBar{
 	color: white;
+	font: 15px &quot;Roboto&quot;;
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -118,14 +124,6 @@ QStatusBar{
        <layout class="QHBoxLayout" name="horizontalLayout_4">
         <item>
          <widget class="QLabel" name="label_2">
-          <property name="font">
-           <font>
-            <family>Cantarell Light</family>
-            <pointsize>11</pointsize>
-            <bold>true</bold>
-            <underline>true</underline>
-           </font>
-          </property>
           <property name="text">
            <string>&lt;a href=&quot;https://github.com/Yarosvet/sf_archiver&quot; style=&quot;color: white&quot;&gt;Visit GitHub&lt;/a&gt;</string>
           </property>
@@ -142,11 +140,6 @@ QStatusBar{
         </item>
         <item>
          <widget class="QLabel" name="version_label">
-          <property name="font">
-           <font>
-            <family>DejaVu Sans Mono</family>
-           </font>
-          </property>
           <property name="text">
            <string>v1.0</string>
           </property>
@@ -159,15 +152,14 @@ QStatusBar{
       </item>
       <item>
        <widget class="QLabel" name="label">
-        <property name="font">
-         <font>
-          <family>DejaVu Sans Mono</family>
-          <pointsize>25</pointsize>
-          <bold>false</bold>
-         </font>
-        </property>
         <property name="text">
-         <string>SF Archiver</string>
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>img/sf_logo.png</pixmap>
+        </property>
+        <property name="scaledContents">
+         <bool>false</bool>
         </property>
         <property name="alignment">
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -248,7 +240,9 @@ QStatusBar{
        <widget class="QPushButton" name="compress_button">
         <property name="font">
          <font>
-          <pointsize>12</pointsize>
+          <family>Roboto</family>
+          <pointsize>-1</pointsize>
+          <italic>false</italic>
           <bold>true</bold>
          </font>
         </property>
@@ -264,7 +258,9 @@ QStatusBar{
        <widget class="QPushButton" name="decompress_button">
         <property name="font">
          <font>
-          <pointsize>12</pointsize>
+          <family>Roboto</family>
+          <pointsize>-1</pointsize>
+          <italic>false</italic>
           <bold>true</bold>
          </font>
         </property>

@@ -28,6 +28,7 @@ class Ui_MainWindow(object):
 "    height: 30px;\n"
 "    border: none;\n"
 "    border-radius: 15px;\n"
+"    font: 700 15px \"Roboto\";\n"
 "}\n"
 "\n"
 "QPushButton:!enabled {\n"
@@ -45,6 +46,7 @@ class Ui_MainWindow(object):
 "\n"
 "QCheckBox {\n"
 "    color: white;\n"
+"    font: 50 15px \"Roboto\";\n"
 "}\n"
 "\n"
 "QCheckBox::indicator {\n"
@@ -63,6 +65,7 @@ class Ui_MainWindow(object):
 "\n"
 "QRadioButton {\n"
 "    color: white;\n"
+"    font: 50 15px \"Roboto\";\n"
 "}\n"
 "\n"
 "QRadioButton::indicator {\n"
@@ -82,14 +85,17 @@ class Ui_MainWindow(object):
 "\n"
 "QGroupBox {\n"
 "    color: white;\n"
+"    font: 50 15px \"Roboto\";\n"
 "}\n"
 "\n"
 "QLabel {\n"
 "    color: white;\n"
+"    font: 50 15px \"Roboto\";\n"
 "}\n"
 "\n"
 "QStatusBar{\n"
 "    color: white;\n"
+"    font: 15px \"Roboto\";\n"
 "}")
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -102,31 +108,20 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         self.label_2 = QtWidgets.QLabel(parent=self.centralwidget)
-        font = QtGui.QFont()
-        font.setFamily("Cantarell Light")
-        font.setPointSize(11)
-        font.setBold(True)
-        font.setUnderline(True)
-        self.label_2.setFont(font)
         self.label_2.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.label_2.setOpenExternalLinks(True)
         self.label_2.setTextInteractionFlags(QtCore.Qt.TextInteractionFlag.TextBrowserInteraction)
         self.label_2.setObjectName("label_2")
         self.horizontalLayout_4.addWidget(self.label_2)
         self.version_label = QtWidgets.QLabel(parent=self.centralwidget)
-        font = QtGui.QFont()
-        font.setFamily("DejaVu Sans Mono")
-        self.version_label.setFont(font)
         self.version_label.setAlignment(QtCore.Qt.AlignmentFlag.AlignRight|QtCore.Qt.AlignmentFlag.AlignTrailing|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.version_label.setObjectName("version_label")
         self.horizontalLayout_4.addWidget(self.version_label)
         self.verticalLayout_4.addLayout(self.horizontalLayout_4)
         self.label = QtWidgets.QLabel(parent=self.centralwidget)
-        font = QtGui.QFont()
-        font.setFamily("DejaVu Sans Mono")
-        font.setPointSize(25)
-        font.setBold(False)
-        self.label.setFont(font)
+        self.label.setText("")
+        self.label.setPixmap(QtGui.QPixmap("sf_app/gui/img/sf_logo.png"))
+        self.label.setScaledContents(False)
         self.label.setAlignment(QtCore.Qt.AlignmentFlag.AlignRight|QtCore.Qt.AlignmentFlag.AlignTrailing|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.label.setObjectName("label")
         self.verticalLayout_4.addWidget(self.label)
@@ -162,16 +157,20 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.compress_button = QtWidgets.QPushButton(parent=self.centralwidget)
         font = QtGui.QFont()
-        font.setPointSize(12)
+        font.setFamily("Roboto")
+        font.setPointSize(-1)
         font.setBold(True)
+        font.setItalic(False)
         self.compress_button.setFont(font)
         self.compress_button.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.compress_button.setObjectName("compress_button")
         self.horizontalLayout_3.addWidget(self.compress_button)
         self.decompress_button = QtWidgets.QPushButton(parent=self.centralwidget)
         font = QtGui.QFont()
-        font.setPointSize(12)
+        font.setFamily("Roboto")
+        font.setPointSize(-1)
         font.setBold(True)
+        font.setItalic(False)
         self.decompress_button.setFont(font)
         self.decompress_button.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.decompress_button.setObjectName("decompress_button")
@@ -192,7 +191,6 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "SF Archiver"))
         self.label_2.setText(_translate("MainWindow", "<a href=\"https://github.com/Yarosvet/sf_archiver\" style=\"color: white\">Visit GitHub</a>"))
         self.version_label.setText(_translate("MainWindow", "v1.0"))
-        self.label.setText(_translate("MainWindow", "SF Archiver"))
         self.groupBox.setTitle(_translate("MainWindow", "Compression algorithm"))
         self.fano_radio.setText(_translate("MainWindow", "Shannon-Fano"))
         self.huffman_radio.setText(_translate("MainWindow", "Huffman"))

@@ -1,9 +1,14 @@
 """Graphical user interface for the application."""
 import signal
 
+from PyQt6.QtGui import QFontDatabase
 from PyQt6.QtWidgets import QApplication
 
 from .mechanics import MainWindow
+
+FONTS = (
+    "sf_app/gui/fonts/Roboto-Regular.ttf",
+)
 
 
 class GUI:
@@ -11,6 +16,11 @@ class GUI:
 
     def __init__(self):
         self._app = QApplication([])
+
+        # Add fonts
+        for _f in FONTS:
+            QFontDatabase.addApplicationFont(_f)
+
         self.main_window = MainWindow()
         self.compress_callback = self.main_window.compress_callback
         self.decompress_callback = self.main_window.decompress_callback
